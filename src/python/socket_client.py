@@ -369,12 +369,15 @@ def numel(arr):
 
 
 def create_tensor_message(
-    tensor,
+    _tensor,
     options,
 ):
     options = options or {}
     MB = 1024 * 1024
-
+    if _tensor.ndim == 2:
+        tensor = _tensor.unsqueeze(0)
+    else:
+        tensor = _tensor
     arr_element_size = element_size(tensor)
     num_elements_per_batch_item = numel(tensor[0])
     arr_size_bytes = arr_element_size * numel(tensor)

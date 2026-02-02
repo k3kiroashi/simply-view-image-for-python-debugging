@@ -13,7 +13,8 @@ def torch_tensor():
             if len(obj.shape) == 2:
                 pass
             elif len(obj.shape) == 3:
-                is_valid &= obj.shape[0] in valid_channels
+                # is_valid &= obj.shape[0] in valid_channels
+                pass
             elif len(obj.shape) == 4:
                 is_valid &= obj.shape[1] in valid_channels
             return is_valid
